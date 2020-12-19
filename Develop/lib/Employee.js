@@ -22,7 +22,7 @@ class Employee {
         return this.email;
     }
     getOfficeNumber() {
-        return this.office;
+        return this.officeNumber;
     }
     getSchool() {
         return this.school;
