@@ -11,7 +11,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const Employee = require("./lib/Employee");
 
-
+let counter
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 const  questions = [{
@@ -48,16 +48,26 @@ const  questions = [{
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
-function init(){
+function makeManager(){
     inquirer.prompt(questions).then((response) => {
-        console.log(response);
-        let newEmp = new Employee(response.role, response.name, response.id, response.email);
+        
+        
+        let newEmp = new Manager(response.name, response.id, response.email);
         render(newEmp);
+        counter++;
+        makeEmployee();
     })
 
 }
+function makeEmployee(response) {
+    if(counter>=1){
+            inquirer.prompt(employeeQuestions).then((res) =>{
 
-init();
+            })
+        }
+}
+
+makeManager();
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the

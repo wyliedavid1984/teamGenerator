@@ -8,8 +8,6 @@ class Engineer extends Employee {
         this.github = github;
         this.role = "Engineer";
     }
-  
-
 } 
 
 module.exports = Engineer;

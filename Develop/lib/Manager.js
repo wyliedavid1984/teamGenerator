@@ -10,8 +10,4 @@ class Manager extends Employee {
     }
 }
 
-const e = new Manager('D', 1, "D@d.net", 100)
-
-console.log(e)
-
 module.exports = Manager;
