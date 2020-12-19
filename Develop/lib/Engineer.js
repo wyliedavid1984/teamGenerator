@@ -12,6 +12,6 @@ class Engineer extends Employee {
 
 } 
 const e = new Engineer("Nate", 2, "n@n.com", "nate")
-console.log(e);
+console.log(e.getGithub());
 
 module.exports = Engineer;

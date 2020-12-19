@@ -21,14 +21,14 @@ class Employee {
     getEmail() {
         return this.email;
     }
-    getOffice() {
+    getOfficeNumber() {
         return this.office;
     }
     getSchool() {
         return this.school;
     }
     getGithub() {
-        return this.gitHub;
+        return this.github;
     }
 }
 
