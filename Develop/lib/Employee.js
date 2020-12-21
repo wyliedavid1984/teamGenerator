@@ -1,6 +1,6 @@
 // TODO: Write code to define and export the Employee class
 class Employee {
-
+    // all key and value pairs
     constructor(name, id, email) {
 
         this.name = name;
@@ -8,7 +8,7 @@ class Employee {
         this.email = email;
         this.role = "Employee";
     }
-
+    // All methods used on the each job
     getRole() {
         return this.role;
     }
@@ -21,15 +21,7 @@ class Employee {
     getEmail() {
         return this.email;
     }
-    getOfficeNumber() {
-        return this.officeNumber;
-    }
-    getSchool() {
-        return this.school;
-    }
-    getGithub() {
-        return this.github;
-    }
+
 }
 
 module.exports = Employee;

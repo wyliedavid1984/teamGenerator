@@ -11,63 +11,90 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const Employee = require("./lib/Employee");
 
-let counter
+let counter = 0;
+let employees = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-const  questions = [{
-    type: "input",
-    name: "role",
-    message: "What is your position?"
-},
-{
-    type: "input",
-    name: "name",
-    message: "What is your name?"
-},
-{
-    type: "input",
-    name: "id",
-    message: "What is your ID number?"
-},
-{
-    type: "input",
-    name: "email",
-    message: "Please enter you email address",
-    validate: function (value) {
-        let mail = value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-        if (mail) {
-            return true;
+makeManager = () => {
+    inquirer.prompt([{
+            type: "input",
+            name: "name",
+            message: "Hi, what is your name?"
+        }, {
+            type: "list",
+            name: "role",
+            message: "What is your position?",
+            choices: [{
+                    type: "input",
+                    name: "github",
+                    message: "What is your Github?"
+                },
+                {
+                    type: "input",
+                    name: "school",
+                    message: "What is your School name?"
+                }
+            ]
+
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is your ID number?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "Please enter you email address",
+            validate: function (value) {
+                let mail = value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+                if (mail) {
+                    return true;
+                } else {
+                    return "Please enter a valid Email address"
+                }
+            }
+
+        }
+
+
+    ]).then((data) => {
+        if (counter < 1) {
+            const manager = new Manager(data.name, data.id, data.email, data.office);
+            employees.push(manager);
+            counter++;
+        } else if (data.role == "Engineer") {
+            const newEngineer = new Engineer(data.name, data.id, data.email, data.github);
+            employees.push(newEngineer);
         } else {
-            return "Please enter a valid Email address"
+            const newIntern = new Intern(data.name, data.id, data.email, data.school);
+            employees.push(newIntern);
         }
-    }
-
-}
-]
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-function makeManager(){
-    inquirer.prompt(questions).then((response) => {
-        
-        
-        let newEmp = new Manager(response.name, response.id, response.email);
-        render(newEmp);
-        counter++;
-        makeEmployee();
+        inquirer.prompt({
+            type: "confirm",
+            name: "newEmployee",
+            message: "Would you like to add an employee?",
+            validate: function () {
+                if (true) {
+                    anotherEmployee();
+                } else {
+                    render(employees);
+                }
+            }
+        })
     })
-
 }
-function makeEmployee(response) {
-    if(counter>=1){
-            inquirer.prompt(employeeQuestions).then((res) =>{
 
-            })
-        }
+const anotherEmployee = () => {
+    inquirer.prompt().then((data) => {
+
+    })
 }
 
 makeManager();
+// After the user has input all employees desired, call the `render` function (required
+// above) and pass in an array containing all employee objects; the `render` function will
+// generate and return a block of HTML including templated divs for each employee!
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
