@@ -15,7 +15,7 @@ let counter = 0;
 let employees = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-makeManager = () => {
+makeEmployee = () => {
     inquirer.prompt([{
             type: "input",
             name: "name",
@@ -24,18 +24,7 @@ makeManager = () => {
             type: "list",
             name: "role",
             message: "What is your position?",
-            choices: [{
-                    type: "input",
-                    name: "github",
-                    message: "What is your Github?"
-                },
-                {
-                    type: "input",
-                    name: "school",
-                    message: "What is your School name?"
-                }
-            ]
-
+            choices: ["Manager", "Engineer", "Intern"]
         },
         {
             type: "input",
@@ -54,12 +43,25 @@ makeManager = () => {
                     return "Please enter a valid Email address"
                 }
             }
-
+        }
+    ]).then((data) => {
+        console.log(data)
+        let newRole = "";
+        if(data.role === "Manager"){
+            newRole = "office";
+        }else if (data.role === "Engineer"){
+            newRole = "github";
+        }else {
+            newRole = "school";
         }
 
+        inquirer.prompt([{
+            type: "input",
+            name: `${newRole}`,
+            message: `What is your ${newRole}`
+        }])
 
-    ]).then((data) => {
-        if (counter < 1) {
+        if (counter < 1 & data.role === "Manager") {
             const manager = new Manager(data.name, data.id, data.email, data.office);
             employees.push(manager);
             counter++;
@@ -76,7 +78,7 @@ makeManager = () => {
             message: "Would you like to add an employee?",
             validate: function () {
                 if (true) {
-                    anotherEmployee();
+                    makeEmployee();
                 } else {
                     render(employees);
                 }
@@ -85,13 +87,9 @@ makeManager = () => {
     })
 }
 
-const anotherEmployee = () => {
-    inquirer.prompt().then((data) => {
 
-    })
-}
 
-makeManager();
+makeEmployee();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
