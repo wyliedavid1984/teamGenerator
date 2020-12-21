@@ -7,8 +7,9 @@ class Engineer extends Employee {
         // from Employee constructor
         super(name, id, email);
         // specific keys to the Engineer
-        this.github = github;
         this.role = "Engineer";
+        this.github = github;
+       
     }
     // specific method for engineer.
     getGithub() {

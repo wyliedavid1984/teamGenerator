@@ -6,8 +6,9 @@ class Manager extends Employee {
     constructor(name, id, email, office) {
         super(name, id, email);
         // manager specific key value
-        this.officeNumber = office;
         this.role = "Manager";
+        this.officeNumber = office;
+        
     }
     // method for manager
     getOfficeNumber() {

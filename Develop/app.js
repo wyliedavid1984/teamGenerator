@@ -47,11 +47,11 @@ makeEmployee = () => {
     ]).then((data) => {
         console.log(data)
         let newRole = "";
-        if(data.role === "Manager"){
-            newRole = "office";
-        }else if (data.role === "Engineer"){
+        if (data.role === "Manager") {
+            newRole = "officeNumber";
+        } else if (data.role === "Engineer") {
             newRole = "github";
-        }else {
+        } else {
             newRole = "school";
         }
 
@@ -59,33 +59,43 @@ makeEmployee = () => {
             type: "input",
             name: `${newRole}`,
             message: `What is your ${newRole}`
-        }])
+        }]).then((dataTwo) => {
 
-        if (counter < 1 & data.role === "Manager") {
-            const manager = new Manager(data.name, data.id, data.email, data.office);
-            employees.push(manager);
-            counter++;
-        } else if (data.role == "Engineer") {
-            const newEngineer = new Engineer(data.name, data.id, data.email, data.github);
-            employees.push(newEngineer);
-        } else {
-            const newIntern = new Intern(data.name, data.id, data.email, data.school);
-            employees.push(newIntern);
-        }
-        inquirer.prompt({
-            type: "confirm",
-            name: "newEmployee",
-            message: "Would you like to add an employee?",
-            validate: function () {
-                if (true) {
-                    makeEmployee();
+            if (counter < 1 & data.role === "Manager") {
+                const manager = new Manager(data.name, data.id, data.email, dataTwo.officeNumber);
+                render(manager)
+                // employees.push(manager);
+                counter++;
+            } else if (data.role === "Engineer") {
+                const newEngineer = new Engineer(data.name, data.id, data.email, dataTwo.github);
+                render(newEngineer)
+                // employees.push(newEngineer);
+            } else {
+                const newIntern = new Intern(data.name, data.id, data.email, dataTwo.school);
+                render(newIntern)
+                // employees.push(newIntern);
+            }        
+            inquirer.prompt({
+                type: "confirm",
+                name: "value",
+                message: "Would you like to add an employee?"
+            }).then((data3) => {
+                console.log(data3);
+                console.log(employees);
+                if (data3.value) {
+                    makeEmployee()
                 } else {
-                    render(employees);
+                    console.log("Go and check out your html page.")
+                //    employees.forEach(employees => render(employees));
                 }
-            }
+                
+            })
         })
     })
 }
+
+
+
 
 
 
@@ -108,4 +118,4 @@ makeEmployee();
 // and Intern classes should all extend from a class named Employee; see the directions
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+// for the provided `render` function to }work! ```

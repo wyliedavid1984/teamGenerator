@@ -4,9 +4,10 @@ class Employee {
     constructor(name, id, email) {
 
         this.name = name;
+        this.role = "Employee";
         this.id = id;
         this.email = email;
-        this.role = "Employee";
+        
     }
     // All methods used on the each job
     getRole() {
