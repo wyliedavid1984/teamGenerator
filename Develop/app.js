@@ -36,12 +36,13 @@ makeEmployee = () => {
             validate: function (role) {
                 if (counter > 0 && role == "Manager") {
                     return "The manager has already been selected, Please pick another option"
-                }}
+                }
+            }
         },
         {
             type: "input",
             name: "id",
-            message: "What is your ID number 00?",
+            message: "What is your ID number in this format 00?",
             validate: function (value) {
                 let newId = value.match("^[0-9]+[0-9]$")
                 if (newId) {
@@ -54,7 +55,7 @@ makeEmployee = () => {
         {
             type: "input",
             name: "email",
-            message: "Please enter you email address",
+            message: "Please enter the email address",
             validate: function (value) {
                 let mail = value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
                 if (mail) {
@@ -123,19 +124,19 @@ const createAnotherEmployee = () => {
     }).then((data3) => {
 
         if (data3.value) {
-    
+
             // User has more employees to put in. 
             makeEmployee()
         } else {
-    
-            // User didn't have any more employees left to put into the system. It will now generate the Html
-            console.log("Go and check out your html page.");
 
+            // User didn't have any more employees left to put into the system. It will now generate the Html
             fs.writeFile("./output/employees.html", render(employees), (err) => {
                 err ? console.log(err) : console.log("Successfully written file!")
             })
+            console.log("Go and check out your html page.");
         }
     })
 }
 
+// calling the function to start prompts
 makeEmployee();
