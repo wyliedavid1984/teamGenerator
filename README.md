@@ -49,12 +49,18 @@ All the html was provided.  I add some additional spacing, and style provided by
 
     node app.js
 
+For more details reference the video from 0:46 forward.
+
 ### Visuals
 
 <details>
 <summary>Screen Shots and Gif with Video link</summary>
 
+![Photo of CLI]
 
+Click on the gif to be linked to the video
+
+[![Gif of video](./assets/teamGenerator.gif)](https://drive.google.com/file/d/181Agg39TZ2LZbTeLjCsmY9YTilF6Ii0v/view)
 
 </details>
 

@@ -33,20 +33,14 @@ makeEmployee = () => {
             name: "role",
             message: "What is your position?",
             choices: ["Manager", "Engineer", "Intern"],
-            validate: function (role) {
-                if (counter < 1 && role !== "Manager") {
-                    return true;
-                }else{
-                    return "The manager has already been selected, Please pick another option"
-                }
-            }
+
         },
         {
             type: "input",
             name: "id",
-            message: "What is your ID number in this format 00?",
+            message: "What is your ID number in this format?",
             validate: function (value) {
-                let newId = value.match("^[0-9]+[0-9]$")
+                let newId = value.match(/^[0-9]\d*$/)
                 if (newId) {
                     return true;
                 } else {
@@ -72,6 +66,8 @@ makeEmployee = () => {
 
         // calling specific functions to sort data and assign them to corresponding job codes.
         arrangeEmployeeData(data);
+
+
     })
 }
 
