@@ -56,11 +56,21 @@ For more details reference the video from 0:46 forward.
 <details>
 <summary>Screen Shots and Gif with Video link</summary>
 
-![Photo of CLI]
+![Photo of CLI](./develop/assets/cli.png)
+
+![HTML created](./develop/assets/createdHtml.png)
+
+![Employee js](./develop/assets/employeeJs.png)
+
+![Engineer js](./develop/assets/engineerJs.png)
+
+![Intern js](./develop/assets/internJs.png)
+
+![Manager js](./develop/assets/managerJs.png)
 
 Click on the gif to be linked to the video
 
-[![Gif of video](./assets/teamGenerator.gif)](https://drive.google.com/file/d/181Agg39TZ2LZbTeLjCsmY9YTilF6Ii0v/view)
+[![Gif of video](./develop/assets/teamGenerator.gif)](https://drive.google.com/file/d/181Agg39TZ2LZbTeLjCsmY9YTilF6Ii0v/view)
 
 </details>
 
