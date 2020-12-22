@@ -29,7 +29,7 @@ The project was to create an easier way to view a development team on a single p
 
 ### Javascript
 
-
+Node is the main avenue for our applications.  We use a lot of class constructors with a single main class constructor called "Employee".  Each job class is then made off of the employee constructor, those being Engineer, Intern, and Manager.  Each of those having a single specific property to the specific job.  All the classes have methods that are specific to them to grab that property.  We make use of npm files like inquirer to ask questions to the user.  Path to help write out our files. I made three separate functions.  The first function runs through the questions, and the user is prompted to answer each question.  After we gather that data, it is then used in the function that will arrange the data for us.  Before we arrange that there is one last property that needs to be gather.  It is the property that is job specific. So now that we have gotten the role from our previous function.  I can now prompt the user to answer a question specified to the job class.  After that data is gather we create an object correlating to the job class.  The last part of this function is calling the last function.  In this function we ask whether the user wants to make another employee.  If they do then it re-prompts the user through the questions again.  If the user doesn't want to enter another user then it creates a file that contains each of the job classes.  There is card being generated for each job class, that was collected from the prompt.  That file is then generated into the output folder that uses the path npm package reference a path file.  
 
 ### CSS
 
@@ -37,7 +37,7 @@ I made use of all the bootstraps classes to style the html.
 
 ### HTML
 
-All the html was provided. I add some additional spacing, and style provided by bootstrap.
+All the html was provided.  I add some additional spacing, and style provided by bootstrap.  Each html was setup to generate by the job class.
 
 </details>
 

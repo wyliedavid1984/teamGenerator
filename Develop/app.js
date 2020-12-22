@@ -34,7 +34,9 @@ makeEmployee = () => {
             message: "What is your position?",
             choices: ["Manager", "Engineer", "Intern"],
             validate: function (role) {
-                if (counter > 0 && role == "Manager") {
+                if (counter < 1 && role !== "Manager") {
+                    return true;
+                }else{
                     return "The manager has already been selected, Please pick another option"
                 }
             }
@@ -130,7 +132,7 @@ const createAnotherEmployee = () => {
         } else {
 
             // User didn't have any more employees left to put into the system. It will now generate the Html
-            fs.writeFile("./output/employees.html", render(employees), (err) => {
+            fs.writeFile(outputPath, render(employees), (err) => {
                 err ? console.log(err) : console.log("Successfully written file!")
             })
             console.log("Go and check out your html page.");
