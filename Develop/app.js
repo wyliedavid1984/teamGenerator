@@ -22,6 +22,7 @@ let employees = [];
 
 // function to uses inquirer to gather information about the development team members,
 makeEmployee = () => {
+    console.log(counter);
     inquirer.prompt([{
             type: "input",
             name: "name",
@@ -32,11 +33,10 @@ makeEmployee = () => {
             name: "role",
             message: "What is your position?",
             choices: ["Manager", "Engineer", "Intern"],
-            validate: function (val) {
-                if (counter > 0 && val === "Manager") {
+            validate: function (role) {
+                if (counter > 0 && role == "Manager") {
                     return "The manager has already been selected, Please pick another option"
-                }
-            }
+                }}
         },
         {
             type: "input",
@@ -69,10 +69,6 @@ makeEmployee = () => {
 
         // calling specific functions to sort data and assign them to corresponding job codes.
         arrangeEmployeeData(data);
-
-        // calling function to create another employee or render data.
-        createAnotherEmployee();
-
     })
 }
 
@@ -108,6 +104,9 @@ const arrangeEmployeeData = (data) => {
             const newIntern = new Intern(data.name, data.id, data.email, dataTwo.school);
             employees.push(newIntern);
         }
+
+        // calling function to create another employee or render data.
+        createAnotherEmployee();
     })
 }
 
