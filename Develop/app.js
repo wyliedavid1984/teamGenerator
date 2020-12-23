@@ -17,10 +17,11 @@ const render = require("./lib/htmlRenderer");
 // array to store all employees
 let employees = [];
 
+
 appMenu = () => {
-
+    // makes a manager object
     createManager = () => {
-
+        // prompts through manager questions
         inquirer.prompt([{
                 type: "input",
                 name: "name",
@@ -65,16 +66,15 @@ appMenu = () => {
                     }
                 }
             }
-
         ]).then((data) => {
-            // calling specific functions to sort data and assign them to corresponding job codes.
-
+            // creates a manager object and push it into employees array and calls the create team function to prompt another employee
             const manager = new Manager(data.name, data.id, data.email, data.officeNumber);
             employees.push(manager);
             createTeam();
         })
     }
 
+    // prompt user to enter another employee or takes in a No response
     createTeam = () => {
         inquirer.prompt({
             type: "list",
@@ -83,6 +83,7 @@ appMenu = () => {
             choices: ["Engineer", "Intern", "No more Employees"],
         }).then((data) => {
 
+            // toggles between the two choices if neither is selected then default is ran and create the html file
             switch (data.role) {
 
                 case "Engineer":
@@ -96,8 +97,9 @@ appMenu = () => {
             }
         })
     }
+    // Creates an engineer object
     createEngineer = () => {
-
+        // prompts through engineer questions 
         inquirer.prompt([{
                 type: "input",
                 name: "name",
@@ -134,16 +136,16 @@ appMenu = () => {
                 name: "github",
                 message: "What is the Engineer's GitHub user name?"
             }
-
         ]).then((data) => {
+            // create new engineer and push up to employees array and then calls the create team function to prompt another employee
             const newEngineer = new Engineer(data.name, data.id, data.email, data.github);
             employees.push(newEngineer);
             createTeam();
         })
     }
-
+    // creates an intern object
     createIntern = () => {
-
+        // prompts intern questions
         inquirer.prompt([{
                 type: "input",
                 name: "name",
@@ -181,6 +183,7 @@ appMenu = () => {
                 message: "What school do the intern attend?"
             }
         ]).then((data) => {
+            // create the new intern object and push up to employees array and then calls the create team function to prompt another employee
             const newIntern = new Intern(data.name, data.id, data.email, data.school);
             employees.push(newIntern);
             createTeam();
@@ -190,9 +193,9 @@ appMenu = () => {
     makeTeam = () => {
 
         fs.writeFile(outputPath, render(employees), (err) => {
-            err ? console.log(err) : console.log("Successfully written file!")
+            err ? console.log(err) : console.log("Successfully written file!\n Go and check out your html page.")
         })
-        console.log("Go and check out your html page.");
+     
     }
 
     createManager();
@@ -201,6 +204,10 @@ appMenu = () => {
 appMenu();
 
 // this is all old code I don't want to delete in case the above code is not working on time.
+// I also though the below code was more efficient but couldn't get the manager not to prompt more than once.
+// leaving in this code to look for other possible fixes
+// 
+// 
 // 
 // 
 // 
