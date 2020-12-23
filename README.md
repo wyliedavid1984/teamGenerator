@@ -76,6 +76,12 @@ Click on the gif to be linked to the video
 
 [![Gif of video](./develop/assets/teamGenerator.gif)](https://drive.google.com/file/d/181Agg39TZ2LZbTeLjCsmY9YTilF6Ii0v/view)
 
+gif for newcode branch also a link to video
+
+[![Gif of newcode Branch video](./develop/assets/newcodeBranch.gif)](https://drive.google.com/file/d/1EJxbwJGMmzLyrizoam69io-b7w4c6s5c/view)
+
+![CLI for newcode Branch](./develop/assets/newcodeCli.png)
+
 </details>
 
 ## Credits
